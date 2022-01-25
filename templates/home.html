@@ -1,0 +1,99 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<hr>
+<div class="table-responsive">
+<h2 align="center">غياب الطالب  </h2>
+    </div>
+</br>
+<div class="table-responsive-sm">
+<table class="table table-bordered">
+  <thead>
+    <tr class="table-info" align="right">
+      <th scope="col" >{{ user.first_name }} </th>
+        <th scope="col">{{ user.id }}</th>
+      <th scope="col">{{ user.group }}</th>
+    </tr>
+  </thead>
+</table>
+</div>
+<br/>
+<div class="table-responsive-sm" align="center">
+<table class="table">
+    <tr>
+      <td><h4 align="center">نسبة غياب الطالب: </h4> </td>
+        {% if attendance[-1][0].attend_percent > 50 %}
+      <td><h3><p class="text-primary" align="right">{{ attendance[-1][0].attend_percent }}%</p></h3></td>
+        {% else %}
+        <td><h3><p class="text-danger" align="right">{{ attendance[-1][0].attend_percent }}%</p></h3></td>
+         {% endif %}
+    </tr>
+</table>
+</div>
+</br>
+</br>
+<p align="right">نسبة غياب الطالب التجميعية حسب المواد للاسبوع الاخير (الاسبوع عدد{{attendance | length  }}):</p>
+<div class="table-responsive-sm">
+    <table class="table table-striped">
+        <tr>
+            <th>المادة:</th>
+            {% for i in range(1,attendance[-1] | length) %}
+                     <td><b>{{attendance[-1][i].subj_name}}</b></td>
+            {% endfor %}
+        </tr>
+        <tr>
+        <th>نسبة الغياب:</th>
+            {% for i in range(1,attendance[-1] | length) %}
+            {% if attendance[-1][i].attend_percent > 50 %}
+            <td>
+                  <p class="text-primary">{{attendance[-1][i].attend_percent}}%</p>
+
+              </td>
+              {% else %}
+              <td>
+                  <p class="text-danger">{{attendance[-1][i].attend_percent}}%</p>
+
+              </td>
+            {% endif %}
+            {% endfor %}
+            </tr>
+          </table>
+</div>
+</br>
+<div class="table-responsive">
+    <h4 align="right">تقرير الغياب التفصيلي لكل أسبوع:</h4>
+</div>
+</br>
+
+
+<div class="table-responsive">
+    {% for element in attendance %}
+    <div class="table-responsive-sm">
+        <h6 align="right">الاسبوع عدد {{ attendance.index(element)+1 }} :</h6>
+    <table class="table table-striped">
+        <tr>
+            <th>المادة:</th>
+            {% for i in range(1,element | length) %}
+                     <td><b>{{element[i].subj_name}}</b></td>
+            {% endfor %}
+        </tr>
+        <tr>
+        <th>نسبة الغياب:</th>
+            {% for i in range(1,element | length) %}
+            {% if element[i].attend_percent > 50 %}
+            <td>
+                  <p class="text-primary">{{element[i].attend_percent}}%</p>
+
+              </td>
+              {% else %}
+              <td>
+                  <p class="text-danger">{{element[i].attend_percent}}%</p>
+
+              </td>
+            {% endif %}
+            {% endfor %}
+            </tr>
+          </table>
+        </div>
+{% endfor %}
+    </div>
+{% endblock %}

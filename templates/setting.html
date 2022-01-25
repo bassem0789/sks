@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block title %}setting{% endblock %} {% block content%}
+<div class="list-group">
+  <a href="/update_default_admin" class="list-group-item list-group-item-action active" aria-current="true">
+    update the default admin
+  </a>
+  <a href="/create-admin" class="list-group-item list-group-item-action">Create admin user</a>
+  <a href="/insert-attendance" class="list-group-item list-group-item-action">Insert attendance </a>
+  <a href="/insert-student" class="list-group-item list-group-item-action">Insert list of student</a>
+  <a href="/admin" class="list-group-item list-group-item-action">Model view</a>
+  <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+%}
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+
+    <div class="col-12" >
+        <h4  align="right">معهد الشيخ خليفة بن سلمان للتكنولوجيا</h4>
+
+    </div>
+
+  </div>
+    <div class="row justify-content-center">
+
+    <div class="col-12">
+        <form method="POST" class="form-inline" >
+          <div class="form-row align-items-center" align="center">
+              <div class="col-auto">
+              <label for="acid">الرقم الاكاديمي</label>
+              </div>
+          </div>
+            <div class="col-auto">
+          <div class="form-group mx-sm-3 mb-2" align="center">
+            <input
+              type="text"
+              class="form-control"
+              id="acid"
+              name="acid"
+              placeholder="ادخل الرقم الأكاديمي"
+                  />
+            </div>
+              </div>
+            <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-2">بحث</button>
+            </div>
+        </form>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}

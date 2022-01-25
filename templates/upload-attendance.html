@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %}upload_attendance{% endblock %} {% block content
+%}
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1>Upload attendance</h1>
+      <hr>
+
+      <form action="/insert-attendance" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Select file</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="file" id="file">
+            <label class="custom-file-label" for="file">Select file...</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Upload</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

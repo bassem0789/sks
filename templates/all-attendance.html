@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+
+<h1 align="center">غياب الطالب  </h1>
+<h2 align="center">{{ user.first_name }} : {{ user.group }} </h2>
+<h1 align="center">حالة الطالب  </h1>
+<h2 align="center">%{{ attendance[-1][0].attend_percent }}</h2>
+
+<div class="table-responsive">
+    {% for element in attendance %}
+    <div class="table-responsive">
+        <h5 align="center">الاسبوع عدد {{ attendance.index(element)+1 }}</h5>
+    <table class="table table-striped">
+        <tr>
+            <th>المادة:</th>
+            {% for i in range(1,element | length) %}
+                     <td><b>{{element[i].subj_name}}</b></td>
+            {% endfor %}
+        </tr>
+        <tr>
+        <th>نسبة الغياب:</th>
+            {% for i in range(1,element | length) %}
+            {% if element[i].attend_percent > 50 %}
+            <td>
+                  <p class="text-primary">{{element[i].attend_percent}}%</p>
+
+              </td>
+              {% else %}
+              <td>
+                  <p class="text-danger">{{element[i].attend_percent}}%</p>
+
+              </td>
+            {% endif %}
+            {% endfor %}
+            </tr>
+          </table>
+        </div>
+{% endfor %}
+    </div>
+{% endblock %}
